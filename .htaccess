@@ -1,0 +1,7 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+
+RewriteRule ^p/(.*)$ ./detail.php?path=$1
+RewriteRule ^series/(.*)$ ./series.php?path=$1
+RewriteRule ^page/([0-9]*)$ ./index.php?page=$1

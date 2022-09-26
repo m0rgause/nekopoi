@@ -1,0 +1,59 @@
+<?php
+require_once "../config.php";
+$query = isset($_GET['s']) ? $_GET['s'] : '';
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$n = new Nekopoi;
+$n = $n->search($page, urlencode($query));
+if ($n['code'] != 200) {
+    die("Something was wrong");
+}
+$data = $n['result'];
+$title = urldecode($query) . " | Search Result";
+require_once "../template/header.php";
+?>
+
+<body>
+    <?php require_once "../template/navbar.php" ?>
+    <div class="mx-5 mt-5">
+        <p>Search result: <?= urldecode($query) ?></p>
+        <div class="row">
+            <?php foreach ($data as $d) : ?>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                    <a href="<?= base_url("p") . $d['link'] ?>">
+                        <div class="card card2 shadow">
+                            <div class="card-header">
+                                <img data-original="<?= $d['image'] ?>" class="card-img-top lazy" loading="lazy" alt="<?= $d['title'] ?>">
+                            </div>
+                            <div class="card-body clamping text-center ">
+                                <p class="card-text "><?= $d['title'] ?></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+
+    <nav aria-label="Page navigation" class="mt-5">
+        <ul class="pagination justify-content-center">
+            <?php if ($page > 6) : ?>
+                <li class="page-item"> <a class="page-link" href="<?= base_url('search/?s=' . urlencode($query) . '&page=') . 1 ?>">Awal</a> </li>
+            <?php endif ?>
+            <?php if ($page > 1) : ?>
+                <li class="page-item"> <a class="page-link" href="<?= base_url('search/?s=' . urlencode($query) . '&page=') . $page - 1 ?>"><i class="fas fa-arrow-left"></i></a> </li>
+            <?php endif ?>
+            <?php if ($page > 2) : ?>
+                <?php for ($i = 1; 0 < $i; $i--) : ?>
+                    <li class="page-item"><a class="page-link" href="<?= base_url('search/?s=' . urlencode($query) . '&page=') . $page - $i ?>"><?= $page - $i ?></a></li>
+                <?php endfor; ?>
+            <?php endif ?>
+            <li class="page-item"><a class="page-link active" href="#page"><?= $page ?></a></li>
+            <?php for ($i = 1; $i < 3; $i++) : ?>
+                <li class="page-item"><a class="page-link" href="<?= base_url('search/?s=' . urlencode($query) . '&page=') . $page + $i ?>"><?= $page + $i ?></a></li>
+            <?php endfor; ?>
+            <li class="page-item"><a class="page-link" href="<?= base_url('search/?s=' . urlencode($query) . '&page=') . $page + 1 ?>"><i class="fas fa-arrow-right"></i></a></li>
+        </ul>
+    </nav>
+
+    <?php require_once "../template/footer.php" ?>
+</body>

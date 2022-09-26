@@ -1,0 +1,146 @@
+:root {
+    --dark1: #1e2129;
+    --dark2: rgba(30, 33, 41, .6);
+    --dark3: #343946;
+    --dark4: #14161b;
+    --dark5: #15181d;
+    --text1: rgba(255, 255, 255, .75);
+    --text2: #00acc1;
+}
+
+* {
+    color: var(--text1) !important;
+}
+
+body {
+    background-color: var(--dark4);
+
+}
+
+.bg-dark {
+    background-color: var(--dark1) !important;
+}
+
+#form {
+    display: flex;
+    border: 2px solid var(--dark3);
+    border-radius: 10px;
+    padding: 0px 5px;
+}
+
+#searchx {
+    background-color: transparent;
+    border: none;
+    color: var(--text1);
+    height: 30px;
+}
+
+#submit {
+    background-color: transparent;
+    border: none;
+    color: var(--dark3);
+}
+
+.card-text {
+    color: #fff !important;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 7px;
+
+}
+
+.card {
+    background-color: var(--dark1);
+}
+
+.card2 {
+
+    height: 300px;
+}
+
+.clamping {
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), var(--dark4));
+    /* background: var(--dark4); */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.clamping:hover {
+    overflow: visible;
+    text-overflow: unset;
+    display: block;
+}
+
+.card-header {
+    padding: 0;
+}
+
+.pagination>li>a {
+    background-color: var(--dark2) !important;
+    border: 0;
+    margin: 0 5px;
+}
+
+.pagination>li>a.active {
+    background-color: var(--text2) !important;
+}
+
+.footer {
+    height: 50px;
+    /* .push must be the same height as .footer */
+}
+
+.jumbotron {
+    padding: 0 !important;
+    /* min-height: 500px; */
+    background-position: center center;
+    background-size: cover;
+    background-color: var(--dark3);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* color: white !important; */
+}
+
+.text1 {
+    color: var(--text1) !important;
+}
+
+.text2 {
+    color: var(--text2) !important;
+}
+
+.list>.list-item:nth-child(2n) strong {
+    padding: 2px 5px;
+    background-color: #F59F3D;
+    border-radius: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list>.list-item:nth-child(2n+1) strong {
+    padding: 2px 5px;
+    background-color: var(--text2);
+    border-radius: 5px;
+}
+
+.item-download {
+    padding: 2px 5px;
+    background-color: var(--dark3);
+    border-radius: 5px;
+}
+
+.card-img-overlay {
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(0, 0, 0, .8));
+}
+
+.footer {
+    background-color: var(--dark2);
+    padding: 15px;
+}
